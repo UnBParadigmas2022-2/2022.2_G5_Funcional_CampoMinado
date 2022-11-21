@@ -18,19 +18,25 @@ Paradigmas:
 # NomeDoProjeto
 
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
-**Nro do Grupo (de acordo com a Planilha de Divisão dos Grupos)**: XX<br>
-**Paradigma**: XXXXXXXXXX<br>
+**Nro do Grupo (de acordo com a Planilha de Divisão dos Grupos)**: 05<br>
+**Paradigma**: Funcional<br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 19/0085291  | Caio César Oliveira |
 | xx/xxxxxx  |  xxxx xxxx xxxxx |
 
 ## Sobre 
-Descreva o seu projeto em linhas gerais. 
-Use referências, links, que permitam conhecer um pouco mais sobre o projeto.
-Capriche nessa seção, pois ela é a primeira a ser lida pelos interessados no projeto.
+O projeto da equipe será construir as principais funções para a estrutura de dados fila, sendo elas:
+- Inserir.
+- Remover. 
+- Buscar.
+- Imprimir.
+- Ordenar. 
+- Inverter. 
+- Criar.
+- Verificar se a fila está vazia/cheia.
 
 ## Screenshots
 Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
