@@ -15,15 +15,7 @@
 | 19/0044390  | Victor Rayan Adriano Ferreira |
 
 ## Sobre 
-O projeto da equipe será construir as principais funções para a estrutura de dados fila, sendo elas:
-- Inserir.
-- Remover. 
-- Buscar.
-- Imprimir.
-- Ordenar. 
-- Inverter. 
-- Criar.
-- Verificar se a fila está vazia/cheia.
+O projeto da equipe será construir uma versão de console do Campo Minado escrita em Haskell.:
 
 ## Screenshots
 Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
