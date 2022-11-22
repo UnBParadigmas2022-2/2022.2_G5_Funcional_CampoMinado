@@ -6,8 +6,13 @@
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
+| 19/0142421  | Artur Vinicius Dias Nunes |
 | 19/0085291  | Caio César Oliveira |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 18/0123203 | João Pedro Alves da Silva Chaves |
+| 18/0123459  | João Vitor de Souza Durso |
+| 19/0128712  | Leticia Assunção Aires Moreira |
+| 19/0111836  | Luan Vasco Cavalcante |
+| 19/0044390  | Victor Rayan Adriano Ferreira |
 
 ## Sobre 
 O projeto da equipe será construir as principais funções para a estrutura de dados fila, sendo elas:
