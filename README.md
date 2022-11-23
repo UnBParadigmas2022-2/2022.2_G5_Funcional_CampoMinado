@@ -1,4 +1,4 @@
-# Biblioteca Estrutura de Dados Fila
+# Campo Minado
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
 **Número do Grupo (de acordo com a Planilha de Divisão dos Grupos)**: 05<br>
 **Paradigma**: Funcional.<br>
@@ -15,7 +15,7 @@
 | 19/0044390  | Victor Rayan Adriano Ferreira |
 
 ## Sobre 
-O projeto da equipe será construir uma versão de console do Campo Minado escrita em Haskell.:
+O projeto da equipe será construir uma versão do popular jogo campo minado. Objectivo é revelar um campo de minas sem que alguma seja detonada, suporta apenas um jogador.
 
 ## Screenshots
 Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
