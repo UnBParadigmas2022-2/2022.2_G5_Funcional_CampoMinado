@@ -44,9 +44,16 @@ modificarMapa x y (((a,b), c):mtz) mtz_usuario = if (x == a && y == b) then ((mo
 modificarPosicao:: Int -> Int -> Int -> Matriz -> Matriz -> Matriz 
 modificarPosicao x y z (((a,b), c):mtzUsuario) mtzFinal = if (x == a && y == b) then mtzFinal ++ (([((x, y), z)] ++ mtzUsuario)) else modificarPosicao x y z mtzUsuario (mtzFinal ++ [((a,b), c)])
         
+preencheCoordLinha :: Int -> [Int]
+preencheCoordLinha coluna =  [ i+1 | i <- [0..coluna]]
+
+preencheLinhaDiv :: Int -> [Int]
+preencheLinhaDiv coluna =  [ (-9) | i <- [0..coluna]]
+
 retornaValorLinha :: Int -> Int -> Matriz -> [Int]
 retornaValorLinha linha 0 matriz = []
 retornaValorLinha linha coluna (((x, y), v):mtz)
+    | coluna == 1 = v:[-7, linha]
     | linha == x = v:retornaValorLinha linha (coluna-1) mtz
     | otherwise = retornaValorLinha linha coluna mtz
 
@@ -55,15 +62,19 @@ converterListaIntParaString [] = ""
 converterListaIntParaString (h:t) 
     | h == -2 = "+ " ++ converterListaIntParaString t
     | h == -1 = "B " ++ converterListaIntParaString t
+    | h == -9 = "_ " ++ converterListaIntParaString t
+    | h == -7 = "| " ++ converterListaIntParaString t
     | otherwise = show h ++ " " ++ converterListaIntParaString t
 
 pegarValoresMapa :: Int -> Int -> Int -> Matriz -> String
 pegarValoresMapa linha linhas colunas matriz
+    | linha == (-1) = converterListaIntParaString (preencheCoordLinha (colunas-1)) ++ "\n" ++ pegarValoresMapa(linha+1) linhas colunas matriz
+    | linha == 0 = converterListaIntParaString (preencheLinhaDiv (colunas-1)) ++ "\n" ++ pegarValoresMapa(linha+1) linhas colunas matriz
     | linha == (linhas+1) = ""
     | otherwise = converterListaIntParaString (retornaValorLinha linha colunas matriz) ++ "\n" ++ pegarValoresMapa (linha+1) linhas colunas matriz
 
 imprimirMapa :: Int -> Int -> Matriz -> IO()
-imprimirMapa linhas colunas matriz = putStrLn (pegarValoresMapa 1 linhas colunas matriz)
+imprimirMapa linhas colunas matriz = putStrLn (pegarValoresMapa (-1) linhas colunas matriz)
 
 inserirFormigueiro:: Int -> Int -> Matriz -> Matriz -> Matriz
 inserirFormigueiro a b [] mtzFinal = mtzFinal
