@@ -15,7 +15,9 @@
 | 19/0044390  | Victor Rayan Adriano Ferreira |
 
 ## Sobre 
-O projeto da equipe será construir uma versão do popular jogo campo minado. Objectivo é revelar um campo de minas sem que alguma seja detonada, suporta apenas um jogador.
+O projeto consiste na construção de uma versão do popular jogo campo minado!
+Nossa releitura atribui ao Tamanduá Bandeira o dever de revelar, no mapa, formigueiros da espécie rasga língua, a fim de proteger seu filho ao se alimentar.
+
 
 ## Screenshots
 Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
