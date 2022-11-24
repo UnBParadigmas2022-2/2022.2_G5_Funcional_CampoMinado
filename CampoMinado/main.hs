@@ -2,6 +2,7 @@ import Mensagens
 import System.Random
 import System.Exit
 import GeradorAleatorio
+import Formigueiro
 
 type Coordenadas = (Int, Int)
 type Valor = Int
@@ -75,19 +76,7 @@ pegarValoresMapa linha linhas colunas matriz
 
 imprimirMapa :: Int -> Int -> Matriz -> IO()
 imprimirMapa linhas colunas matriz = putStrLn (pegarValoresMapa (-1) linhas colunas matriz)
-
-inserirFormigueiro:: Int -> Int -> Matriz -> Matriz -> Matriz
-inserirFormigueiro a b [] mtzFinal = mtzFinal
-inserirFormigueiro a b (((x, y), z): mtz) mtzFinal = 
-    if(a == x && b == y) then
-        mtzFinal++[((x, y), -1)]++mtz 
-    else
-        inserirFormigueiro a b mtz (mtzFinal++[((x, y), z)])
-
-inserirFormigueiros :: [(Int, Int)] -> Matriz -> Matriz
-inserirFormigueiros [] mtz = mtz
-inserirFormigueiros ((x, y): mtzTail) mtz =  inserirFormigueiros mtzTail (inserirFormigueiro x y mtz [])         
-
+        
 somaFormigueirosEscondidos :: Int -> Matriz -> Int
 somaFormigueirosEscondidos num [] = num
 somaFormigueirosEscondidos num (((x, y), v) : mtz) = if (v == -2) then (somaFormigueirosEscondidos (num+1) mtz) else (somaFormigueirosEscondidos (num) mtz)
@@ -191,7 +180,7 @@ iniciarJogo = do
     
     let posicoes_aleatorias = GeradorAleatorio.geraPosicoesAleatorias linhas colunas bombas semente1 semente2 []
     
-    let campo_bombado = (inserirFormigueiros posicoes_aleatorias campo_minado)
+    let campo_bombado = (Formigueiro.inserirFormigueiros posicoes_aleatorias campo_minado)
     
     let prepara_campo_bombado = distFormigueiros campo_bombado campo_bombado
 
