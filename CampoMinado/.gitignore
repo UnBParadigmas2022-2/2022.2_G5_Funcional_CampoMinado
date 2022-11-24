@@ -5,3 +5,9 @@
 /main.o
 /Mensagens.hi
 /Mensagens.o
+.stack-work/
+*~
+*.cabal
+.vscode
+*.txt
+!graph.txt
