@@ -15,16 +15,19 @@
 | 19/0044390  | Victor Rayan Adriano Ferreira |
 
 ## Sobre 
-O projeto consiste na construção de uma versão do popular jogo campo minado!
-Nossa releitura atribui ao Tamanduá Bandeira o dever de revelar, no mapa, formigueiros da espécie rasga língua, a fim de proteger seu filho ao se alimentar.
+O presente projeto consiste na construção de uma versão do popular jogo campo minado.<br>
+Nossa releitura corresponde na busca do Tamanduá Bandeira por formigueiros seguros para que seu fliho se alimente, tendo em vista que existem inúmeros formigueiros da espécie rasga língua, a qual machuca seu filhote.<br>
+Assim, para proteger seu filho, objetiva-se identificar os formigueiros danosos e evita-los.
 
 
 ## Screenshots
-Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
+![image](https://user-images.githubusercontent.com/72623771/203873711-8b2ce8cd-16d7-4e45-b2a1-abd3dd72cecf.png)
+![image](https://user-images.githubusercontent.com/72623771/203873725-07469796-ef22-4a98-be51-8cdaf6169925.png)
+
 
 ## Instalação 
-**Linguagens**: xxxxxx<br>
-**Tecnologias**: xxxxxx<br>
+**Linguagens**: Haskell<br>
+**Tecnologias**: VS Code e Haskell Tool Stack <br>
 Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
 Insira um manual ou um script para auxiliar ainda mais.
 Gifs animados e outras ilustrações são bem-vindos!
@@ -48,7 +51,14 @@ TEMPO: +/- 15min
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
-| Fulano  |  Programação dos Fatos da Base de Conhecimento Lógica | Boa |
+| Artur Vinicius Dias Nunes  |  Corrigir bug de quando você erra o comando no jogo |  |
+| Caio César Oliveira | Adicionar função para marcar bomba e jogo retornar para o menu | |
+| João Pedro Alves da Silva Chaves | Adicionar contador de partidas e adicionar números nas laterais | |
+| João Vitor de Souza Durso |  Adicionar opção para 2 jogadores | |
+| Leticia Assunção Aires Moreira | Adicionar contador de partidas, adicionar jogador 2 e read me| |
+| Luan Vasco Cavalcante | Adicionar dificuldade para o jogo | |
+| Victor Rayan Adriano Ferreira | Refatorar o código dividindo conjunto de funções parecidas em arquivos | |
+
 
 ## Outros 
 Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
