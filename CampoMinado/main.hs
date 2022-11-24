@@ -136,8 +136,9 @@ entradas linhas colunas bombas mtzInterna mtzUsuario = do
         let matrizUsuarioReveladaRecursivamente = revelarMuitos linhas colunas matrizUsuario matrizUsuario mtzInterna
 
         imprimirMapa linhas colunas (matrizUsuarioReveladaRecursivamente)
-        if(verificaFormigueiro (x, y) mtzInterna) then
+        if(verificaFormigueiro (x, y) mtzInterna) then do
             Mensagens.menssagemDerrota
+            menu
         else
             if (somaFormigueirosEscondidos 0 matrizUsuarioReveladaRecursivamente == bombas) then Mensagens.menssagemVitoria else entradas linhas colunas bombas mtzInterna matrizUsuario 
     else do
