@@ -1,5 +1,10 @@
 import Mensagens
 
+
+verificaDificuldade "1" = "5 5 5"
+verificaDificuldade "2" = "7 7 7"
+verificaDificuldade "3" = "9 9 9"
+
 inicia_jogo :: IO()
 inicia_jogo = do
 
