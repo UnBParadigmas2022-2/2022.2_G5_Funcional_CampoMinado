@@ -9,7 +9,6 @@ type Valor = Int
 type Elem = (Coordenadas,Valor)
 type Matriz = [Elem]
 
-
 criarMapa:: Int -> Int -> Int -> Matriz
 criarMapa a b c = [((x,y), c) | x <-[1,2..a], y <-[1,2..b]]
 
@@ -119,10 +118,9 @@ revelarMuitos linhas colunas (((x, y), z):mtzUsuarioTail) mtzUsuario mtzInterna 
         else
             revelarMuitos linhas colunas (revelarCruz x y linhas colunas mtzUsuario mtzInterna) (revelarCruz x y linhas colunas mtzUsuario mtzInterna) mtzInterna
 
-entradas :: Int -> Int -> Int -> Matriz -> Matriz -> IO()
-entradas linhas colunas bombas mtzInterna mtzUsuario = do
+entradas :: Int -> Int -> Int -> Int -> Matriz -> Matriz -> IO()
+entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
     putStr "Informe sua jogada:"
-    
     entrada <- getLine
     putStrLn"\n"
     let info = words entrada
@@ -137,16 +135,20 @@ entradas linhas colunas bombas mtzInterna mtzUsuario = do
 
         imprimirMapa linhas colunas (matrizUsuarioReveladaRecursivamente)
         if(verificaFormigueiro (x, y) mtzInterna) then do
+            putStrLn "NÚMERO DE RODADAS:"
+            print (contador+1)
             Mensagens.menssagemDerrota
             menu
         else
             if (somaFormigueirosEscondidos 0 matrizUsuarioReveladaRecursivamente == bombas) then do 
+                putStrLn "NÚMERO DE RODADAS:"
+                print (contador+1)
                 Mensagens.menssagemVitoria 
                 menu 
-            else entradas linhas colunas bombas mtzInterna matrizUsuario 
+            else entradas (contador+1) linhas colunas bombas mtzInterna matrizUsuario 
     else do
         putStrLn "Opcao invalida"
-        entradas linhas colunas bombas mtzInterna mtzUsuario
+        entradas contador linhas colunas bombas mtzInterna mtzUsuario
 
 verificaDificuldade "1" = "5 5 5"
 verificaDificuldade "2" = "7 7 7"
@@ -188,7 +190,7 @@ iniciarJogo = do
     
     imprimirMapa linhas colunas matriz_impressa
 
-    entradas linhas colunas bombas prepara_campo_bombado matriz_impressa
+    entradas 0 linhas colunas bombas prepara_campo_bombado matriz_impressa
 
 main :: IO()
 main = do
@@ -200,7 +202,7 @@ menu = do
     escolha <- getLine
     
     if(escolha == "1") then do
-        iniciarJogo
+        iniciarJogo 
     else if(escolha == "2") then do
         Mensagens.menuHistoria
         menu
