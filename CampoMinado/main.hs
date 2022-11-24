@@ -140,7 +140,10 @@ entradas linhas colunas bombas mtzInterna mtzUsuario = do
             Mensagens.menssagemDerrota
             menu
         else
-            if (somaFormigueirosEscondidos 0 matrizUsuarioReveladaRecursivamente == bombas) then Mensagens.menssagemVitoria else entradas linhas colunas bombas mtzInterna matrizUsuario 
+            if (somaFormigueirosEscondidos 0 matrizUsuarioReveladaRecursivamente == bombas) then do 
+                Mensagens.menssagemVitoria 
+                menu 
+            else entradas linhas colunas bombas mtzInterna matrizUsuario 
     else do
         putStrLn "Opcao invalida"
         entradas linhas colunas bombas mtzInterna mtzUsuario
