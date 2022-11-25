@@ -152,20 +152,36 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
         putStrLn "Opcao invalida"
         entradas contador linhas colunas bombas mtzInterna mtzUsuario
 
-verificaDificuldade "1" = "5 5 5"
-verificaDificuldade "2" = "7 7 7"
-verificaDificuldade "3" = "9 9 9"
-
-iniciarJogo :: IO()
-iniciarJogo = do
+-- USO DE GUARDS
+verificaDificuldade :: String -> String
+verificaDificuldade x   | x == "1" = "5 5 5"
+                        | x == "2" = "7 7 7"
+                        | x == "3" = "9 9 9"
+    
+escolherDificuldade :: IO()
+escolherDificuldade = do
     putStrLn"Informe a dificuldade:"
     putStrLn"(1) Facil"
     putStrLn"(2) Medio"
     putStrLn"(3) Dificil"
     putStrLn"Sua opção:"
     entrada <- getLine
-    putStrLn "\n"
+    
+    if(entrada == "1") then do
+        putStrLn "facil"
+        iniciarJogo entrada
+    else if(entrada == "2") then do
+        putStrLn "medio"
+        iniciarJogo entrada
+    else if(entrada == "3") then do
+        putStrLn "dificil"
+        iniciarJogo entrada
+    else do
+        putStrLn "Opção inválida"
+        escolherDificuldade
 
+iniciarJogo :: String -> IO()
+iniciarJogo entrada = do
     let entradaLinha = verificaDificuldade entrada
     let array = words entradaLinha
     let linhas = read (array !! 0) :: Int
@@ -204,7 +220,7 @@ menu = do
     escolha <- getLine
     
     if(escolha == "1") then do
-        iniciarJogo 
+        escolherDificuldade 
     else if(escolha == "2") then do
         Mensagens.menuHistoria
         menu
