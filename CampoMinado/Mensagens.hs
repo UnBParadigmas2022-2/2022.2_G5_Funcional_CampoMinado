@@ -54,7 +54,8 @@ menssagemMenu = do
     putStrLn "|                                       |1| START                                                 |" 
     putStrLn "|                                       |2| HISTORIA                                              |" 
     putStrLn "|                                       |3| TUTORIAL                                              |" 
-    putStrLn "|                                       |4| QUIT                                                  |" 
+    putStrLn "|                                       |4| RANKING                                               |" 
+    putStrLn "|                                       |5| QUIT                                                  |" 
     putStrLn "|_________________________________________________________________________________________________|"
 
 

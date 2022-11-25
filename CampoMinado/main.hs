@@ -4,6 +4,8 @@ import System.Exit
 import GeradorAleatorio
 import Formigueiro
 import Helpers
+import System.IO
+import System.IO.Error
 
 type Coordenadas = (Int, Int)
 type Valor = Int
@@ -47,6 +49,9 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
         if(Formigueiro.verificaFormigueiro (x, y) mtzInterna) then do
             putStrLn "NÚMERO DE RODADAS:"
             print (contador+1)
+            putStrLn "Digite seu nome:"
+            nomeJogador <- getLine
+            escreveRanking nomeJogador contador
             Mensagens.menssagemDerrota
             putStrLn "Aperte Enter . . ."
             nada <- getLine
@@ -58,7 +63,7 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
             if (Formigueiro.somaFormigueirosEscondidos 0 matrizUsuarioReveladaRecursivamente == bombas) then do 
                 putStrLn "NÚMERO DE RODADAS:"
                 print (contador+1)
-                Mensagens.menssagemVitoria 
+                Mensagens.menssagemVitoria
                 menu 
             else entradas (contador+1) linhas colunas bombas mtzInterna matrizUsuario 
     else if (j == "M") then do
@@ -135,6 +140,23 @@ iniciarJogo entrada = do
 
     entradas 0 linhas colunas bombas prepara_campo_bombado matriz_impressa
 
+ranking :: IO ()
+ranking = do
+    file <- openFile "ranking.txt" ReadMode
+    conteudo <- hGetContents file
+    print conteudo
+    putStrLn "Aperte enter"
+    nada <- getLine
+    hClose file
+    menu
+
+escreveRanking :: String -> Int -> IO ()
+escreveRanking jogador contador= do
+    file <- openFile "ranking.txt" AppendMode
+    hPutStr file (show (jogador))
+    hPutStrLn file (show (contador + 1))
+    hClose file
+
 main :: IO()
 main = do
     menu
@@ -156,7 +178,10 @@ menu = do
         putStrLn "Aperte enter"
         nada <- getLine
         menu
-    else if(escolha == "4") then do 
+    else if(escolha == "4") then do
+        ranking
+        menu
+    else if(escolha == "5") then do 
         Mensagens.menuConsciencia
         exitSuccess
     else do
