@@ -18,6 +18,15 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
     entrada <- getLine
     putStrLn"\n"
     let info = words entrada
+
+    if (contaPalavras info == 3) then do
+        putStrLn ""
+    else do
+        putStrLn "Comando inválido. Verifique a aba TUTORIAL para entender as regras do jogo."
+        putStrLn"\n"
+        entradas contador linhas colunas bombas mtzInterna mtzUsuario
+        -- Helpers.imprimirMapa linhas colunas matrizUsuarioReveladaRecursivamente
+
     let j = info !! 0
     let x = read (info !! 1) :: Int
     let y = read (info !! 2) :: Int
@@ -55,6 +64,9 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
         else do
             putStrLn "Opcao invalida"
             entradas contador linhas colunas bombas mtzInterna mtzUsuario
+
+contaPalavras :: [String] -> Int
+contaPalavras = sum . map (length . words)
 
 -- USO DE GUARDS
 verificaDificuldade :: String -> String
