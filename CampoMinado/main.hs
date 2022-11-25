@@ -120,7 +120,9 @@ revelarMuitos linhas colunas (((x, y), z):mtzUsuarioTail) mtzUsuario mtzInterna 
 
 entradas :: Int -> Int -> Int -> Int -> Matriz -> Matriz -> IO()
 entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
-    putStr "Informe sua jogada:"
+    putStr "Qtde formigueiros rasga-linguas: "
+    print bombas
+    putStrLn "Informe sua jogada:"
     entrada <- getLine
     putStrLn"\n"
     let info = words entrada
@@ -160,7 +162,7 @@ iniciarJogo = do
     putStrLn"(1) Facil"
     putStrLn"(2) Medio"
     putStrLn"(3) Dificil"
-    putStr "Sua opção:"
+    putStrLn"Sua opção:"
     entrada <- getLine
     putStrLn "\n"
 
