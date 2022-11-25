@@ -80,7 +80,7 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | João Vitor de Souza Durso |  Adicionar opção para 2 jogadores, corrigir bug de quando você erra o comando no jogo, adicionar cronometro. | |
 | Leticia Assunção Aires Moreira | Adicionar contador de partidas, adicionar jogador 2 e read me. | |
 | Luan Vasco Cavalcante | Adicionar dificuldade para o jogo, contextualizou o jogo com a história do Tamanduá | |
-| Victor Rayan Adriano Ferreira | Refatorar o código dividindo conjunto de funções parecidas em arquivos | |
+| Victor Rayan Adriano Ferreira | Refatorar e modularizar o código dividindo conjunto de funções parecidas em arquivos, Adicionar contador de formigas rasga-línguas Victor | |
 
 
 ## Outros 
