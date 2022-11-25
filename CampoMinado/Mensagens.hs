@@ -66,7 +66,7 @@ menuHistoria = do
     putStrLn "|                                                                             |" 
     putStrLn "|            O tamanduá bandeira é muito cuidadoso com seu filhote            |" 
     putStrLn "|                  precisa mapear uma área marcando onde existe               |" 
-    putStrLn "|                       formigueiros da rasga língua!!                        |" 
+    putStrLn "|                       formigueiros da rasga-língua!!                        |" 
     putStrLn "|                                                                             |" 
     putStrLn "|                             Ajude o tamanduá !!                             |" 
     putStrLn "|-----------------------------------------------------------------------------|" 
@@ -76,7 +76,7 @@ menuInstrucoes :: IO()
 menuInstrucoes = do
     putStrLn "" 
     putStrLn "|-----------------------------------------------------------------------------|" 
-    putStrLn "|                         Instruçoes para jogar:                              |" 
+    putStrLn "|                         Instruções para jogar:                              |" 
     putStrLn "|                                                                             |" 
     putStrLn "|                Coloque o comando e as posições desejadas!                   |" 
     putStrLn "|                 Exemplo: C 1 2 - Cavar formigueiro (1,2).                   |" 
