@@ -49,9 +49,6 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
         if(Formigueiro.verificaFormigueiro (x, y) mtzInterna) then do
             putStrLn "NÚMERO DE RODADAS:"
             print (contador+1)
-            putStrLn "Digite seu nome:"
-            nomeJogador <- getLine
-            escreveRanking nomeJogador contador
             Mensagens.menssagemDerrota
             putStrLn "Aperte Enter . . ."
             nada <- getLine
@@ -64,6 +61,9 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
                 putStrLn "NÚMERO DE RODADAS:"
                 print (contador+1)
                 Mensagens.menssagemVitoria
+                putStrLn "Digite seu nome:"
+                nomeJogador <- getLine
+                escreveRanking nomeJogador contador
                 menu 
             else entradas (contador+1) linhas colunas bombas mtzInterna matrizUsuario 
     else if (j == "M") then do
