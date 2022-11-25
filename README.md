@@ -81,12 +81,12 @@ TEMPO: +/- 15min
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
-| Artur Vinicius Dias Nunes  |  Corrigir bug de quando você erra o comando no jogo |  |
-| Caio César Oliveira | Adicionar função para marcar bomba e jogo retornar para o menu | |
+| Artur Vinicius Dias Nunes  |  Corrigir bug de quando você insere o comando errado no jogo |  |
+| Caio César Oliveira | Adicionar função para marcar bomba e fazer o jogador retornar para o menu ao vencer ou perder uma partida | |
 | João Pedro Alves da Silva Chaves | Adicionar contador de partidas e adicionar números nas laterais | |
 | João Vitor de Souza Durso |  Adicionar opção para 2 jogadores | |
 | Leticia Assunção Aires Moreira | Adicionar contador de partidas, adicionar jogador 2 e read me| |
-| Luan Vasco Cavalcante | Adicionar dificuldade para o jogo | |
+| Luan Vasco Cavalcante | Adicionar dificuldade para o jogo, contextualizou o jogo com a história do Tamanduá | |
 | Victor Rayan Adriano Ferreira | Refatorar o código dividindo conjunto de funções parecidas em arquivos | |
 
 
