@@ -12,24 +12,31 @@ type Matriz = [Elem]
 
 entradas :: Int -> Int -> Int -> Int -> Matriz -> Matriz -> IO()
 entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
-    putStr "Qtde formigueiros rasga-linguas: "
+    putStr "Quantidade de formigueiros rasga-línguas: "
     print bombas
     putStrLn "Informe sua jogada:"
     entrada <- getLine
     putStrLn"\n"
     let info = words entrada
-
-    if (contaPalavras info == 3) then do
-        putStrLn ""
-    else do
-        putStrLn "Comando inválido. Verifique a aba TUTORIAL para entender as regras do jogo."
-        putStrLn"\n"
-        entradas contador linhas colunas bombas mtzInterna mtzUsuario
-        -- Helpers.imprimirMapa linhas colunas matrizUsuarioReveladaRecursivamente
-
     let j = info !! 0
     let x = read (info !! 1) :: Int
     let y = read (info !! 2) :: Int
+
+    if (contaPalavras info == 3) then do
+        putStrLn ""
+    else if (j == "TUTORIAL") then do
+            Mensagens.menuInstrucoes
+    else if (j == "SAIR") then do
+            Mensagens.menuConsciencia
+            putStrLn "Aperte Enter para voltar ao menú. . ."
+            nada <- getLine
+            menu
+    else do
+        putStrLn "Comando inválido. Digite TUTORIAL para entender as regras do jogo ou SAIR para deixar a partida."
+        putStrLn"\n"
+        entradas contador linhas colunas bombas mtzInterna mtzUsuario
+        --Helpers.imprimirMapa linhas colunas mtzUsuario
+
 
     if(j == "C") then do
         let matrizUsuario = if(Formigueiro.verificaFormigueiro (x, y) mtzInterna) then revelarMapa mtzInterna mtzInterna mtzUsuario else modificarMapa x y mtzInterna mtzUsuario
@@ -54,17 +61,18 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
                 Mensagens.menssagemVitoria 
                 menu 
             else entradas (contador+1) linhas colunas bombas mtzInterna matrizUsuario 
-    else do
-        if(j == "M") then do
+    else if (j == "M") then do
             let matrizUsuario = Helpers.marcarBomba x y mtzInterna mtzUsuario
             let matrizUsuarioReveladaRecursivamente = Helpers.revelarMuitos linhas colunas matrizUsuario matrizUsuario mtzInterna
             Helpers.imprimirMapa linhas colunas (matrizUsuarioReveladaRecursivamente)
 
             entradas (contador) linhas colunas bombas mtzInterna matrizUsuario
-        else do
-            putStrLn "Opcao invalida"
-            entradas contador linhas colunas bombas mtzInterna mtzUsuario
+    else do
+        putStrLn "Aperte Enter para voltar ao menú. . ."
+        nada <- getLine
+        menu
 
+-- CONTA QUANTAS PALAVRAS FORAM PASSADAS NA STRING
 contaPalavras :: [String] -> Int
 contaPalavras = sum . map (length . words)
 
