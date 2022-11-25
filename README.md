@@ -17,7 +17,7 @@
 ## Sobre 
 O presente projeto consiste na construção de uma releitura da versão do popular jogo campo minado para a disciplina Paradigmas de Programação do curso de Engenharia de Software da Universidade de Brasília.
 
-Tomou-se como inspiração os seguintes projetos: [Campo Minado](https://github.com/raianyrufino/Minesweeper/blob/master/Haskell) e [projeto da disciplina do semestre passado](https://github.com/UnBParadigmas2021-2/2021.2_G4-Struct_Logico_Campo_Minado), ao qual adicionamos funcionalidades, ajustamos bugs e modularizamos de forma a adequar o código ao paradigma funcional.
+Tomou-se como inspiração e base os seguintes projetos: [Campo Minado](https://github.com/raianyrufino/Minesweeper/blob/master/Haskell) e [projeto da disciplina do semestre passado](https://github.com/UnBParadigmas2021-2/2021.2_G4-Struct_Logico_Campo_Minado), ao qual adicionamos funcionalidades, ajustamos bugs e modularizamos de forma a adequar o código ao paradigma funcional.
 
 Nossa releitura corresponde na busca do Tamanduá Bandeira por formigueiros seguros para que seu filho se alimente, tendo em vista que existem inúmeros formigueiros da espécie rasga-língua, que machuca seu filhote. Assim, para proteger seu filho e vencer o jogo, objetiva-se identificar todos esses formigueiros e evitá-los.
 
