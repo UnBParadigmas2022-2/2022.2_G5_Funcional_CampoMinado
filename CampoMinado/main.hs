@@ -3,124 +3,12 @@ import System.Random
 import System.Exit
 import GeradorAleatorio
 import Formigueiro
+import Helpers
 
 type Coordenadas = (Int, Int)
 type Valor = Int
 type Elem = (Coordenadas,Valor)
 type Matriz = [Elem]
-
-criarMapa:: Int -> Int -> Int -> Matriz
-criarMapa a b c = [((x,y), c) | x <-[1,2..a], y <-[1,2..b]]
-
-distFormigueiros:: Matriz -> Matriz -> Matriz
-distFormigueiros [] matriz = matriz
-distFormigueiros (((x, y), z): mtz) matriz = if (z == -1) then distFormigueiros mtz (somaProxFormigueiro x y matriz) else (distFormigueiros mtz matriz)
-
-inverter:: Int -> Int -> Matriz -> Matriz-> Matriz
-inverter num1 num2 matriz anterior = reverse(verificarSoma num1 num2 matriz anterior)
-
-verificarSoma:: Int -> Int -> Matriz -> Matriz-> Matriz
-verificarSoma num1 num2 [] anterior = [ ]
-verificarSoma num1 num2 (((x, y), z): mtz) anterior = if(num1 == x && num2 == y && z /= -1) then anterior++(reverse ([((x,y), z+1)]++ mtz)) else verificarSoma num1 num2 mtz  anterior++[((x,y), z)]
-
-somaProxFormigueiro:: Int -> Int -> Matriz -> Matriz
-somaProxFormigueiro x y mtz = inverter x (y-1) (inverter x (y+1) (inverter (x-1) y (inverter (x-1) (y+1) (inverter (x-1) (y-1) (inverter (x+1) y (inverter (x+1) (y+1) (inverter (x+1) (y-1) mtz [])[])[])[])[])[])[])[]
-
-verificaFormigueiro :: (Int, Int) -> Matriz -> Bool
-verificaFormigueiro tupla [] = False
-verificaFormigueiro (x, y) (((a, b), c):mtzTail) = 
-    if (x == a && y == b && c == -1) then 
-        True 
-    else 
-        verificaFormigueiro (x, y) mtzTail
-
-marcarBomba:: Int -> Int -> Matriz -> Matriz -> Matriz
-marcarBomba x y (((a,b), c):mtz) mtz_usuario = if (x == a && y == b) then ((modificarPosicao x y (-10) mtz_usuario [])) else marcarBomba x y mtz mtz_usuario
-
-revelarMapa:: Matriz -> Matriz -> Matriz -> Matriz
-revelarMapa [] mtzInterna mtzUsuario = mtzUsuario
-revelarMapa (((a,b), c):mtzInternaTail) mtzInterna mtzUsuario = revelarMapa mtzInternaTail mtzInterna (modificarMapa a b mtzInterna mtzUsuario)
-
-modificarMapa:: Int -> Int -> Matriz -> Matriz -> Matriz
-modificarMapa x y (((a,b), c):mtz) mtz_usuario = if (x == a && y == b) then ((modificarPosicao x y c mtz_usuario [])) else modificarMapa x y mtz mtz_usuario
-
-modificarPosicao:: Int -> Int -> Int -> Matriz -> Matriz -> Matriz 
-modificarPosicao x y z (((a,b), c):mtzUsuario) mtzFinal = if (x == a && y == b) then mtzFinal ++ (([((x, y), z)] ++ mtzUsuario)) else modificarPosicao x y z mtzUsuario (mtzFinal ++ [((a,b), c)])
-        
-preencheCoordLinha :: Int -> [Int]
-preencheCoordLinha coluna =  [ i+1 | i <- [0..coluna]]
-
-preencheLinhaDiv :: Int -> [Int]
-preencheLinhaDiv coluna =  [ (-9) | i <- [0..coluna]]
-
-retornaValorLinha :: Int -> Int -> Matriz -> [Int]
-retornaValorLinha linha 0 matriz = []
-retornaValorLinha linha coluna (((x, y), v):mtz)
-    | coluna == 1 = v:[-7, linha]
-    | linha == x = v:retornaValorLinha linha (coluna-1) mtz
-    | otherwise = retornaValorLinha linha coluna mtz
-
-converterListaIntParaString :: [Int] -> String
-converterListaIntParaString [] = ""
-converterListaIntParaString (h:t) 
-    | h == -2 = "+ " ++ converterListaIntParaString t
-    | h == -1 = "B " ++ converterListaIntParaString t
-    | h == -10 = "F " ++ converterListaIntParaString t
-    | h == -9 = "_ " ++ converterListaIntParaString t
-    | h == -7 = "| " ++ converterListaIntParaString t
-    | otherwise = show h ++ " " ++ converterListaIntParaString t
-
-pegarValoresMapa :: Int -> Int -> Int -> Matriz -> String
-pegarValoresMapa linha linhas colunas matriz
-    | linha == (-1) = converterListaIntParaString (preencheCoordLinha (colunas-1)) ++ "\n" ++ pegarValoresMapa(linha+1) linhas colunas matriz
-    | linha == 0 = converterListaIntParaString (preencheLinhaDiv (colunas-1)) ++ "\n" ++ pegarValoresMapa(linha+1) linhas colunas matriz
-    | linha == (linhas+1) = ""
-    | otherwise = converterListaIntParaString (retornaValorLinha linha colunas matriz) ++ "\n" ++ pegarValoresMapa (linha+1) linhas colunas matriz
-
-imprimirMapa :: Int -> Int -> Matriz -> IO()
-imprimirMapa linhas colunas matriz = putStrLn (pegarValoresMapa (-1) linhas colunas matriz)
-        
-somaFormigueirosEscondidos :: Int -> Matriz -> Int
-somaFormigueirosEscondidos num [] = num
-somaFormigueirosEscondidos num (((x, y), v) : mtz) = if (v == -2) then (somaFormigueirosEscondidos (num+1) mtz) else (somaFormigueirosEscondidos (num) mtz)
-
-revelar :: Int -> Int -> Matriz -> Bool
-revelar x y (((a,b),v):mtzTail) = if (a==x && b==y) then (v/=(-2)) else (revelar x y mtzTail)
-
-formigueirosRevelados :: Int -> Int -> Int -> Int -> Matriz -> Bool
-formigueirosRevelados x y linhas colunas mtzUsuario
-    | (x == 1 && y == 1) = (revelar (x) (y+1) mtzUsuario) && (revelar (x+1) (y) mtzUsuario)
-    | (x == 1 && y == colunas) = (revelar (x) (y-1) mtzUsuario) && (revelar (x+1) (y) mtzUsuario)
-    | (x == linhas && y == colunas) = (revelar (x) (y-1) mtzUsuario) && (revelar (x-1) (y) mtzUsuario)
-    | (x == linhas && y == 1) = (revelar (x) (y+1) mtzUsuario) && (revelar (x-1) (y) mtzUsuario)
-    | (x == 1 && y > 1 && y < colunas) = (revelar (x) (y+1) mtzUsuario) && (revelar (x) (y-1) mtzUsuario) && (revelar (x+1) (y) mtzUsuario)
-    | (x > 1 && x < linhas && y == colunas) = (revelar (x-1) (y) mtzUsuario) && (revelar (x+1) (y) mtzUsuario) && (revelar (x) (y-1) mtzUsuario)
-    | (x == linhas && y > 1 && y < colunas) = (revelar (x-1) (y) mtzUsuario) && (revelar (x) (y-1) mtzUsuario) && (revelar (x) (y+1) mtzUsuario)
-    | (x > 1 && x < linhas && y == 1) = (revelar (x) (y+1) mtzUsuario) && (revelar (x-1) (y) mtzUsuario) && (revelar (x+1) (y) mtzUsuario)
-    | otherwise = (revelar (x-1) (y) mtzUsuario) && (revelar (x) (y+1) mtzUsuario) && (revelar (x+1) (y) mtzUsuario) && (revelar (x) (y-1) mtzUsuario)
-
-revelarCruz :: Int -> Int -> Int -> Int -> Matriz -> Matriz -> Matriz
-revelarCruz x y linhas colunas mtzUsuario mtzInterna
-    | (x == 1 &&  y == 1) = modificarMapa (x+1) y mtzInterna (modificarMapa x (y+1) mtzInterna mtzUsuario)
-    | (x == 1 && y == colunas) = modificarMapa (x+1) y mtzInterna (modificarMapa x (y-1) mtzInterna mtzUsuario)
-    | (x == linhas && y == colunas) = modificarMapa (x-1) y mtzInterna (modificarMapa x (y-1) mtzInterna mtzUsuario)
-    | (x == linhas && y==1) = modificarMapa (x-1) y mtzInterna (modificarMapa x (y+1) mtzInterna mtzUsuario)
-    | (x==1 && y > 1 && y < colunas) = modificarMapa (x+1) y mtzInterna (modificarMapa x (y-1) mtzInterna (modificarMapa x (y+1) mtzInterna mtzUsuario))
-    | (x>1 && x < linhas && y==colunas) = modificarMapa (x-1) y mtzInterna (modificarMapa (x+1) (y) mtzInterna (modificarMapa x (y-1) mtzInterna mtzUsuario))
-    | (x== linhas && y > 1 && y < colunas) = modificarMapa (x-1) y mtzInterna (modificarMapa x (y-1) mtzInterna (modificarMapa x (y+1) mtzInterna mtzUsuario))
-    | (x>1 && x<linhas && y==1) = modificarMapa x (y+1) mtzInterna (modificarMapa (x-1) y mtzInterna (modificarMapa (x+1) y mtzInterna mtzUsuario))
-    | otherwise = modificarMapa (x-1) y mtzInterna (modificarMapa (x) (y+1) mtzInterna (modificarMapa (x+1) (y) mtzInterna (modificarMapa x (y-1) mtzInterna mtzUsuario)))
-
-revelarMuitos :: Int -> Int -> Matriz -> Matriz -> Matriz -> Matriz
-revelarMuitos linhas colunas [] mtzUsuario mtzInterna = mtzUsuario
-revelarMuitos linhas colunas (((x, y), z):mtzUsuarioTail) mtzUsuario mtzInterna = 
-    if (z /= 0) then
-        revelarMuitos linhas colunas mtzUsuarioTail mtzUsuario mtzInterna
-    else 
-        if (formigueirosRevelados x y linhas colunas mtzUsuario) then
-            revelarMuitos linhas colunas mtzUsuarioTail mtzUsuario mtzInterna
-        else
-            revelarMuitos linhas colunas (revelarCruz x y linhas colunas mtzUsuario mtzInterna) (revelarCruz x y linhas colunas mtzUsuario mtzInterna) mtzInterna
 
 entradas :: Int -> Int -> Int -> Int -> Matriz -> Matriz -> IO()
 entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
@@ -135,18 +23,18 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
     let y = read (info !! 2) :: Int
 
     if(j == "C") then do
-        let matrizUsuario = if(verificaFormigueiro (x, y) mtzInterna) then revelarMapa mtzInterna mtzInterna mtzUsuario else modificarMapa x y mtzInterna mtzUsuario
+        let matrizUsuario = if(Formigueiro.verificaFormigueiro (x, y) mtzInterna) then revelarMapa mtzInterna mtzInterna mtzUsuario else modificarMapa x y mtzInterna mtzUsuario
         
-        let matrizUsuarioReveladaRecursivamente = revelarMuitos linhas colunas matrizUsuario matrizUsuario mtzInterna
+        let matrizUsuarioReveladaRecursivamente = Helpers.revelarMuitos linhas colunas matrizUsuario matrizUsuario mtzInterna
 
-        imprimirMapa linhas colunas (matrizUsuarioReveladaRecursivamente)
-        if(verificaFormigueiro (x, y) mtzInterna) then do
+        Helpers.imprimirMapa linhas colunas (matrizUsuarioReveladaRecursivamente)
+        if(Formigueiro.verificaFormigueiro (x, y) mtzInterna) then do
             putStrLn "NÚMERO DE RODADAS:"
             print (contador+1)
             Mensagens.menssagemDerrota
             menu
         else
-            if (somaFormigueirosEscondidos 0 matrizUsuarioReveladaRecursivamente == bombas) then do 
+            if (Formigueiro.somaFormigueirosEscondidos 0 matrizUsuarioReveladaRecursivamente == bombas) then do 
                 putStrLn "NÚMERO DE RODADAS:"
                 print (contador+1)
                 Mensagens.menssagemVitoria 
@@ -154,9 +42,9 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
             else entradas (contador+1) linhas colunas bombas mtzInterna matrizUsuario 
     else do
         if(j == "M") then do
-            let matrizUsuario = marcarBomba x y mtzInterna mtzUsuario
-            let matrizUsuarioReveladaRecursivamente = revelarMuitos linhas colunas matrizUsuario matrizUsuario mtzInterna
-            imprimirMapa linhas colunas (matrizUsuarioReveladaRecursivamente)
+            let matrizUsuario = Helpers.marcarBomba x y mtzInterna mtzUsuario
+            let matrizUsuarioReveladaRecursivamente = Helpers.revelarMuitos linhas colunas matrizUsuario matrizUsuario mtzInterna
+            Helpers.imprimirMapa linhas colunas (matrizUsuarioReveladaRecursivamente)
 
             entradas (contador) linhas colunas bombas mtzInterna matrizUsuario
         else do
