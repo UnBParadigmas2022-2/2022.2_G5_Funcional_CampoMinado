@@ -15,9 +15,15 @@
 | 19/0044390  | Victor Rayan Adriano Ferreira |
 
 ## Sobre 
-O presente projeto consiste na construção de uma releitura da versão do popular jogo campo minado.<br>
-Nossa releitura corresponde na busca do Tamanduá Bandeira por formigueiros seguros para que seu filho se alimente, tendo em vista que existem inúmeros formigueiros da espécie rasga-língua, a qual machuca seu filhote.<br>
-Assim, para proteger seu filho, objetiva-se identificar esses formigueiros e evitá-los.
+O presente projeto consiste na construção de uma releitura da versão do popular jogo campo minado para a disciplina Paradigmas de Programação do curso de Engenharia de Software da Universidade de Brasília.
+
+Tomou-se como base o seguinte [repositório](https://github.com/raianyrufino/Minesweeper/blob/master/Haskell), ao qual adicionamos funcionalidades, ajustamos bugs e modularizamos de forma a adequar o código ao paradigma funcional.
+
+Nossa releitura corresponde na busca do Tamanduá Bandeira por formigueiros seguros para que seu filho se alimente, tendo em vista que existem inúmeros formigueiros da espécie rasga-língua, que machuca seu filhote. Assim, para proteger seu filho e vencer o jogo, objetiva-se identificar todos esses formigueiros e evitá-los.
+
+Para jogar, é necessário indicar, primeiramente a dificuldade do jogo e, em seguida, a linha e coluna do espaço que será revelado. A partir disso, deverá-se analisar o mapa a fim de evitar espaços comprometidos por formigueiros da rasga-língua, o que impacta na derrota do jogador.
+
+Caso queira se familiarizar com a lógica do jogo, por outros meios, indicamos também este [site](https://minesweeperonline.com/) de minesweeper.
 
 
 ## Screenshots
@@ -28,10 +34,31 @@ Assim, para proteger seu filho, objetiva-se identificar esses formigueiros e evi
 ## Instalação 
 **Linguagens**: Haskell<br>
 **Tecnologias**: VS Code e Haskell Tool Stack <br>
-<!--Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
-Insira um manual ou um script para auxiliar ainda mais.
-Gifs animados e outras ilustrações são bem-vindos!
--->
+Para rodar Haskell code, instale as seguintes bibliotecas.
+
+```
+$ sudo apt install cabal-install
+$ cabal update
+```
+Depois use cabal para instalar as bibliotecas Random e ExitCode:
+```
+$ cabal install random
+$ cabal install exitcode
+
+```
+Compile o código:
+```
+campoMinado.hs
+```
+
+Prolog:
+
+Compile o código:
+
+```
+$ swipl -q -f campo.pl
+```
+
 
 ## Uso 
 <!-- Explique como usar seu projeto.
