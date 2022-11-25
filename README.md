@@ -15,9 +15,9 @@
 | 19/0044390  | Victor Rayan Adriano Ferreira |
 
 ## Sobre 
-O presente projeto consiste na construção de uma versão do popular jogo campo minado.<br>
-Nossa releitura corresponde na busca do Tamanduá Bandeira por formigueiros seguros para que seu fliho se alimente, tendo em vista que existem inúmeros formigueiros da espécie rasga língua, a qual machuca seu filhote.<br>
-Assim, para proteger seu filho, objetiva-se identificar os formigueiros danosos e evita-los.
+O presente projeto consiste na construção de uma releitura da versão do popular jogo campo minado.<br>
+Nossa releitura corresponde na busca do Tamanduá Bandeira por formigueiros seguros para que seu filho se alimente, tendo em vista que existem inúmeros formigueiros da espécie rasga-língua, a qual machuca seu filhote.<br>
+Assim, para proteger seu filho, objetiva-se identificar esses formigueiros e evitá-los.
 
 
 ## Screenshots
@@ -28,17 +28,19 @@ Assim, para proteger seu filho, objetiva-se identificar os formigueiros danosos 
 ## Instalação 
 **Linguagens**: Haskell<br>
 **Tecnologias**: VS Code e Haskell Tool Stack <br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+<!--Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
 Insira um manual ou um script para auxiliar ainda mais.
 Gifs animados e outras ilustrações são bem-vindos!
+-->
 
 ## Uso 
-Explique como usar seu projeto.
+<!-- Explique como usar seu projeto.
 Procure ilustrar em passos, com apoio de telas do software, seja com base na interface gráfica, seja com base no terminal.
 Nessa seção, deve-se revelar de forma clara sobre o funcionamento do software.
+-->
 
 ## Vídeo
-Adicione 1 ou mais vídeos com a execução do projeto.
+<!--Adicione 1 ou mais vídeos com a execução do projeto.
 Procure: 
 (i) Introduzir o projeto;
 (ii) Mostrar passo a passo o código, explicando-o, e deixando claro o que é de terceiros, e o que é contribuição real da equipe;
@@ -46,6 +48,7 @@ Procure:
 (iV) Apresentar lições aprendidas, contribuições, pendências, e ideias para trabalhos futuros.
 OBS: TODOS DEVEM PARTICIPAR, CONFERINDO PONTOS DE VISTA.
 TEMPO: +/- 15min
+-->
 
 ## Participações
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
@@ -61,12 +64,14 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 
 
 ## Outros 
-Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
+<!--Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
 (i) Lições Aprendidas;
 (ii) Percepções;
 (iii) Contribuições e Fragilidades, e
 (iV) Trabalhos Futuros.
+-->
 
 ## Fontes
-Referencie, adequadamente, as referências utilizadas.
+<!--Referencie, adequadamente, as referências utilizadas.
 Indique ainda sobre fontes de leitura complementares.
+-->
