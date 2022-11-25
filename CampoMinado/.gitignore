@@ -11,3 +11,7 @@
 .vscode
 *.txt
 !graph.txt
+/Formigueiro.hi
+/Formigueiro.o
+/Helpers.hi
+/Helpers.o
