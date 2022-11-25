@@ -110,8 +110,11 @@ menuInstrucoes :: IO()
 menuInstrucoes = do
     putStrLn "" 
     putStrLn "|-----------------------------------------------------------------------------|" 
-    putStrLn "|                         Instruçoes para jogar:                              |" 
+    putStrLn "|                         Instruções para jogar:                              |" 
     putStrLn "|                                                                             |" 
     putStrLn "|                Coloque o comando e as posições desejadas!                   |" 
     putStrLn "|                 Exemplo: C 1 2 - Cavar formigueiro (1,2).                   |" 
+    putStrLn "|                 Exemplo: M 1 2 - Marcar formigueiro (1,2).                  |"
+    putStrLn "|                   C significa Cavar, ou melhor, revelar.                    |"
+    putStrLn "|                           Já M significa Marcar.                            |" 
     putStrLn "|-----------------------------------------------------------------------------|" 
