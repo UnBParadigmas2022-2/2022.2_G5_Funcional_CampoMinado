@@ -140,6 +140,11 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
             putStrLn "NÚMERO DE RODADAS:"
             print (contador+1)
             Mensagens.menssagemDerrota
+            putStrLn "Aperte Enter . . ."
+            nada <- getLine
+            Mensagens.menuConsciencia
+            putStrLn "Aperte Enter . . ."
+            nada <- getLine
             menu
         else
             if (somaFormigueirosEscondidos 0 matrizUsuarioReveladaRecursivamente == bombas) then do 
@@ -157,24 +162,25 @@ verificaDificuldade :: String -> String
 verificaDificuldade x   | x == "1" = "5 5 5"
                         | x == "2" = "7 7 7"
                         | x == "3" = "9 9 9"
-    
+
+-- USO DE IF ELSE 
 escolherDificuldade :: IO()
 escolherDificuldade = do
     putStrLn"Informe a dificuldade:"
     putStrLn"(1) Facil"
     putStrLn"(2) Medio"
     putStrLn"(3) Dificil"
-    putStrLn"Sua opção:"
+    putStrLn "Sua opção:\n>>"
     entrada <- getLine
     
     if(entrada == "1") then do
-        putStrLn "facil"
+        putStrLn "Essa região é pequena.\nBom jogo\n"
         iniciarJogo entrada
     else if(entrada == "2") then do
-        putStrLn "medio"
+        putStrLn "Essa região é grande.Mas o tamanduá-bandeira é maior!!\nBom jogo\n"
         iniciarJogo entrada
     else if(entrada == "3") then do
-        putStrLn "dificil"
+        putStrLn "Que desafio !\nBoa sorte e bom jogo,Tamanduá-bandeira\n\n"
         iniciarJogo entrada
     else do
         putStrLn "Opção inválida"
@@ -223,11 +229,16 @@ menu = do
         escolherDificuldade 
     else if(escolha == "2") then do
         Mensagens.menuHistoria
+        putStrLn "Aperte enter"
+        nada <- getLine
         menu
     else if(escolha == "3") then do
         Mensagens.menuInstrucoes
+        putStrLn "Aperte enter"
+        nada <- getLine
         menu
     else if(escolha == "4") then do 
+        Mensagens.menuConsciencia
         exitSuccess
     else do
         putStrLn "Opção inválida"
