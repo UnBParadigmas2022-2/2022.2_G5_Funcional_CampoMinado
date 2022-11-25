@@ -1,4 +1,4 @@
-# Campo Minado
+# Formigueiro Minado
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
 **Número do Grupo (de acordo com a Planilha de Divisão dos Grupos)**: 05<br>
 **Paradigma**: Funcional.<br>
