@@ -34,6 +34,9 @@ verificaFormigueiro (x, y) (((a, b), c):mtzTail) =
     else 
         verificaFormigueiro (x, y) mtzTail
 
+marcarBomba:: Int -> Int -> Matriz -> Matriz -> Matriz
+marcarBomba x y (((a,b), c):mtz) mtz_usuario = if (x == a && y == b) then ((modificarPosicao x y (-10) mtz_usuario [])) else marcarBomba x y mtz mtz_usuario
+
 revelarMapa:: Matriz -> Matriz -> Matriz -> Matriz
 revelarMapa [] mtzInterna mtzUsuario = mtzUsuario
 revelarMapa (((a,b), c):mtzInternaTail) mtzInterna mtzUsuario = revelarMapa mtzInternaTail mtzInterna (modificarMapa a b mtzInterna mtzUsuario)
@@ -62,6 +65,7 @@ converterListaIntParaString [] = ""
 converterListaIntParaString (h:t) 
     | h == -2 = "+ " ++ converterListaIntParaString t
     | h == -1 = "B " ++ converterListaIntParaString t
+    | h == -10 = "F " ++ converterListaIntParaString t
     | h == -9 = "_ " ++ converterListaIntParaString t
     | h == -7 = "| " ++ converterListaIntParaString t
     | otherwise = show h ++ " " ++ converterListaIntParaString t
@@ -149,8 +153,15 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
                 menu 
             else entradas (contador+1) linhas colunas bombas mtzInterna matrizUsuario 
     else do
-        putStrLn "Opcao invalida"
-        entradas contador linhas colunas bombas mtzInterna mtzUsuario
+        if(j == "M") then do
+            let matrizUsuario = marcarBomba x y mtzInterna mtzUsuario
+            let matrizUsuarioReveladaRecursivamente = revelarMuitos linhas colunas matrizUsuario matrizUsuario mtzInterna
+            imprimirMapa linhas colunas (matrizUsuarioReveladaRecursivamente)
+
+            entradas (contador) linhas colunas bombas mtzInterna matrizUsuario
+        else do
+            putStrLn "Opcao invalida"
+            entradas contador linhas colunas bombas mtzInterna mtzUsuario
 
 verificaDificuldade "1" = "5 5 5"
 verificaDificuldade "2" = "7 7 7"
