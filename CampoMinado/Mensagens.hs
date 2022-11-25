@@ -67,8 +67,15 @@ menuHistoria = do
     putStrLn "|            O tamanduá bandeira é muito cuidadoso com seu filhote            |" 
     putStrLn "|                  precisa mapear uma área marcando onde existe               |" 
     putStrLn "|                       formigueiros da rasga língua!!                        |" 
-    putStrLn "|                                                                             |" 
-    putStrLn "|                             Ajude o tamanduá !!                             |" 
+    putStrLn "|                                                                             |"
+    putStrLn "|    O tamanduá bandeira consegue farejar os formigueiros de rasga-língua     |"
+    putStrLn "|   quanto maior o número, maior o cheiro e mais rasga-línguas por perto !!!  |"
+    putStrLn "|       Sendo assim, se o número for 1, tem um formigueiro nos arredores      |"
+    putStrLn "|                       Se for 2, têm 2 (queee medoo !!)                      |"
+    putStrLn "|                                                                             |"
+    putStrLn "|                  Mas o tamanduá-bandeira é esperto e glorioso               |"
+    putStrLn "|      por isso ele consegue marcar na região onde essas formigas estão !!    |"
+    putStrLn "|                Sendo assim, não ouse abrir a região marcada !!              |"
     putStrLn "|-----------------------------------------------------------------------------|" 
 
 
