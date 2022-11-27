@@ -14,7 +14,7 @@ revelarCruz,
 revelarMuitos,
 marcarBomba,
 revelarArredores,
-mostraFormigueiros
+mostraFormigueirosFaltantes
 )where
 
 import Formigueiro
@@ -113,15 +113,15 @@ revelarMuitos linhas colunas (((x, y), z):mtzUsuarioTail) mtzUsuario mtzInterna 
             revelarMuitos linhas colunas (revelarCruz x y linhas colunas mtzUsuario mtzInterna) (revelarCruz x y linhas colunas mtzUsuario mtzInterna) mtzInterna
 
 calculaFormigueirosFaltantes :: Int -> Matriz -> Int
-calculaFormigueiros contador [] = contador
-calculaFormigueiros contador (((x, y), value) : matriz) = if (value == -2) then 
-    (calculaFormigueiros (contador+1) matriz) 
+calculaFormigueirosFaltantes contador [] = contador
+calculaFormigueirosFaltantes contador (((x, y), value) : matriz) = if (value == -2) then 
+    (calculaFormigueirosFaltantes (contador+1) matriz) 
     else 
-        (calculaFormigueiros (num) matriz)
+        (calculaFormigueirosFaltantes (contador) matriz)
 
 mostraFormigueirosFaltantes :: Int -> Matriz -> IO()         
-mostraFormigueiros rasgaLinguas matriz = do
-    let qtdeFormigueiro = calculaFormigueiros 0 matriz
+mostraFormigueirosFaltantes rasgaLinguas matriz = do
+    let qtdeFormigueiro = calculaFormigueirosFaltantes 0 matriz
     let formigueirosPossiveis = qtdeFormigueiro - rasgaLinguas
     if (formigueirosPossiveis <= 0 ) then do
         putStrLn "---------------------------------------------"

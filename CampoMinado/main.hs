@@ -43,7 +43,7 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
         let matrizUsuario = if(Formigueiro.verificaFormigueiro (x, y) mtzInterna) then Helpers.revelarMapa mtzInterna mtzInterna mtzUsuario else Helpers.modificarMapa x y mtzInterna mtzUsuario
         let matrizUsuarioReveladaRecursivamente = Helpers.revelarMuitos linhas colunas matrizUsuario matrizUsuario mtzInterna
         
-        Helpers.mostraFormigueiros bombas matrizUsuarioReveladaRecursivamente
+        Helpers.mostraFormigueirosFaltantes bombas matrizUsuarioReveladaRecursivamente
         putStrLn"\n"
         Helpers.imprimirMapa linhas colunas (matrizUsuarioReveladaRecursivamente)
         if(Formigueiro.verificaFormigueiro (x, y) mtzInterna) then do
