@@ -14,8 +14,7 @@ type Matriz = [Elem]
 
 entradas :: Int -> Int -> Int -> Int -> Matriz -> Matriz -> IO()
 entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
-    putStr "Quantidade de formigueiros rasga-línguas: "
-    print bombas
+
     putStrLn "Informe sua jogada:"
     entrada <- getLine
     putStrLn"\n"
@@ -41,10 +40,11 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
 
 
     if(j == "C") then do
-        let matrizUsuario = if(Formigueiro.verificaFormigueiro (x, y) mtzInterna) then revelarMapa mtzInterna mtzInterna mtzUsuario else modificarMapa x y mtzInterna mtzUsuario
-        
+        let matrizUsuario = if(Formigueiro.verificaFormigueiro (x, y) mtzInterna) then Helpers.revelarMapa mtzInterna mtzInterna mtzUsuario else Helpers.modificarMapa x y mtzInterna mtzUsuario
         let matrizUsuarioReveladaRecursivamente = Helpers.revelarMuitos linhas colunas matrizUsuario matrizUsuario mtzInterna
-
+        
+        Helpers.mostraFormigueiros bombas matrizUsuarioReveladaRecursivamente
+        putStrLn"\n"
         Helpers.imprimirMapa linhas colunas (matrizUsuarioReveladaRecursivamente)
         if(Formigueiro.verificaFormigueiro (x, y) mtzInterna) then do
             putStrLn "NÚMERO DE RODADAS:"
