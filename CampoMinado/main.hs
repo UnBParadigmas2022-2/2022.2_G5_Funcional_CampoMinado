@@ -7,6 +7,11 @@ import Helpers
 import System.IO
 import System.IO.Error
 
+import Control.Exception
+import Formatting
+import Formatting.Clock
+import System.Clock
+
 type Coordenadas = (Int, Int)
 type Valor = Int
 type Elem = (Coordenadas,Valor)
@@ -14,7 +19,7 @@ type Matriz = [Elem]
 
 entradas :: Int -> Int -> Int -> Int -> Matriz -> Matriz -> IO()
 entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
-
+    start <- getTime Monotonic
     putStrLn "Informe sua jogada:"
     entrada <- getLine
     putStrLn"\n"
@@ -47,6 +52,10 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
         putStrLn"\n"
         Helpers.imprimirMapa linhas colunas (matrizUsuarioReveladaRecursivamente)
         if(Formigueiro.verificaFormigueiro (x, y) mtzInterna) then do
+            end <- getTime Monotonic
+            putStr "VOCÊ MORREU EM "
+            fprint(timeSpecs) start end
+            putStrLn"\n"
             putStrLn "NÚMERO DE RODADAS:"
             print (contador+1)
             Mensagens.menssagemDerrota
@@ -58,6 +67,11 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
             menu
         else
             if (Formigueiro.somaFormigueirosEscondidos 0 matrizUsuarioReveladaRecursivamente == bombas) then do 
+                end <- getTime Monotonic
+                putStr "VOCÊ VENCEU EM "
+                fprint(timeSpecs) start end
+                putStrLn"\n"
+
                 putStrLn "NÚMERO DE RODADAS:"
                 print (contador+1)
                 Mensagens.menssagemVitoria
