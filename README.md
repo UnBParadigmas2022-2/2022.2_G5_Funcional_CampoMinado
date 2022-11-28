@@ -1,4 +1,4 @@
-# Campo Minado
+# Formigueiro Minado
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
 **Número do Grupo (de acordo com a Planilha de Divisão dos Grupos)**: 05<br>
 **Paradigma**: Funcional.<br>
@@ -57,7 +57,17 @@ main.hs
 <!-- Explique como usar seu projeto.
 Procure ilustrar em passos, com apoio de telas do software, seja com base na interface gráfica, seja com base no terminal.
 Nessa seção, deve-se revelar de forma clara sobre o funcionamento do software.
--->
+--> 
+É possível que haja problemas com bibliotecas ao rodar o código. Para resolvê-los, rode no terminal:
+```
+cabal install --lib random
+```
+```
+cabal install --lib formatting
+```
+```
+cabal install --lib clock
+```
 
 ## Vídeo
 <!--Adicione 1 ou mais vídeos com a execução do projeto.
@@ -78,20 +88,26 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | Caio César Oliveira | Adicionar função para marcar bomba e fazer o jogador retornar para o menu ao vencer ou perder uma partida, adicionar Ranking para top melhores jogadas, corrigir bug de quando você erra o comando no jogo. | Excelente |
 | João Pedro Alves da Silva Chaves | Adicionar contador de partidas e adicionar números nas laterais, corrigir bug de quando você erra o comando no jogo, adicionar função para marcar bomba. | Excelente |
 | João Vitor de Souza Durso |  Adicionar opção para 2 jogadores, corrigir bug de quando você erra o comando no jogo, adicionar cronometro. | Excelente |
-| Leticia Assunção Aires Moreira | Adicionar contador de partidas, adicionar jogador 2 e read me. | Excelente |
+| Leticia Assunção Aires Moreira | Adicionar contador de partidas e adicionar opção para 2 jogadores, adicionar função de cronômetro e read me. | Excelente |
 | Luan Vasco Cavalcante | Adicionar dificuldade para o jogo, contextualizou o jogo com a história do Tamanduá | Excelente |
-| Victor Rayan Adriano Ferreira | Refatorar e modularizar o código dividindo conjunto de funções parecidas em arquivos, Adicionar contador de formigas rasga-línguas, Arte Asci do menu e correção de bug de textos do menu | Excelente |
+| Victor Rayan Adriano Ferreira | Refatorar e modularizar o código dividindo conjunto de funções parecidas em arquivos, Adicionar contador de formigas rasga-línguas, Arte Asci do menu e função para marcar quadrados possíveis. | Excelente |
 
 
 ## Outros 
-<!--Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
-(i) Lições Aprendidas;
-(ii) Percepções;
-(iii) Contribuições e Fragilidades, e
-(iV) Trabalhos Futuros.
--->
+
+### Sugestões para próximos semestres
+
+* Implementar uma opção no menu para jogar o formigueiro minado com 2 jogadores: soluções imaginadas pela equipe: Jogar 2 jogadores no mesmo campo, com intuito de colaboração ou de competição, no sentido de que quem errar perde ou quem fizer o último comando antes da vitória é o vencedor. Segunda solução seria executar dois mapas de uma vez e alternar as jogadas entre os jogadores, perderia quem acertasse um formigueiro primeiro ou ganharia quem terminasse o jogo primeiro.
 
 ## Fontes
 <!--Referencie, adequadamente, as referências utilizadas.
 Indique ainda sobre fontes de leitura complementares.
 -->
+
+https://github.com/raianyrufino/Minesweeper/tree/master/Haskell (Repositório com funções úteis para o projeto)
+
+
+https://github.com/UnBParadigmas2021-2/2021.2_G4-Struct_Logico_Campo_Minado (Repositório com idéia de projeto)
+
+
+https://kuniga.wordpress.com/2012/06/17/leitura-e-escrita-de-dados-em-haskell/ (Site com ensimanetos úteis para trabalhar com arquios em Haskell)

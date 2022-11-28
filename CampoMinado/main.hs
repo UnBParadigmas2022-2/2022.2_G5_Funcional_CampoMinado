@@ -7,6 +7,11 @@ import Helpers
 import System.IO
 import System.IO.Error
 
+import Control.Exception
+import Formatting
+import Formatting.Clock
+import System.Clock
+
 type Coordenadas = (Int, Int)
 type Valor = Int
 type Elem = (Coordenadas,Valor)
@@ -14,8 +19,7 @@ type Matriz = [Elem]
 
 entradas :: Int -> Int -> Int -> Int -> Matriz -> Matriz -> IO()
 entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
-    putStr "Quantidade de formigueiros rasga-línguas: "
-    print bombas
+    start <- getTime Monotonic
     putStrLn "Informe sua jogada:"
     entrada <- getLine
     putStrLn"\n"
@@ -30,7 +34,7 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
             Mensagens.menuInstrucoes
     else if (j == "SAIR") then do
             Mensagens.menuConsciencia
-            putStrLn "Aperte Enter para voltar ao menú. . ."
+            putStrLn "Aperte Enter para voltar ao menu. . ."
             nada <- getLine
             menu
     else do
@@ -41,12 +45,17 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
 
 
     if(j == "C") then do
-        let matrizUsuario = if(Formigueiro.verificaFormigueiro (x, y) mtzInterna) then revelarMapa mtzInterna mtzInterna mtzUsuario else modificarMapa x y mtzInterna mtzUsuario
-        
+        let matrizUsuario = if(Formigueiro.verificaFormigueiro (x, y) mtzInterna) then Helpers.revelarMapa mtzInterna mtzInterna mtzUsuario else Helpers.modificarMapa x y mtzInterna mtzUsuario
         let matrizUsuarioReveladaRecursivamente = Helpers.revelarMuitos linhas colunas matrizUsuario matrizUsuario mtzInterna
-
+        
+        Helpers.mostraFormigueirosFaltantes bombas matrizUsuarioReveladaRecursivamente
+        putStrLn"\n"
         Helpers.imprimirMapa linhas colunas (matrizUsuarioReveladaRecursivamente)
         if(Formigueiro.verificaFormigueiro (x, y) mtzInterna) then do
+            end <- getTime Monotonic
+            putStr "VOCÊ MORREU EM "
+            fprint(timeSpecs) start end
+            putStrLn"\n"
             putStrLn "NÚMERO DE RODADAS:"
             print (contador+1)
             Mensagens.menssagemDerrota
@@ -58,6 +67,11 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
             menu
         else
             if (Formigueiro.somaFormigueirosEscondidos 0 matrizUsuarioReveladaRecursivamente == bombas) then do 
+                end <- getTime Monotonic
+                putStr "VOCÊ VENCEU EM "
+                fprint(timeSpecs) start end
+                putStrLn"\n"
+
                 putStrLn "NÚMERO DE RODADAS:"
                 print (contador+1)
                 Mensagens.menssagemVitoria
@@ -73,7 +87,7 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
 
             entradas (contador) linhas colunas bombas mtzInterna matrizUsuario
     else do
-        putStrLn "Aperte Enter para voltar ao menú. . ."
+        putStrLn "Aperte Enter para voltar ao menu. . ."
         nada <- getLine
         menu
 
@@ -144,7 +158,7 @@ ranking :: IO ()
 ranking = do
     file <- openFile "ranking.txt" ReadMode
     conteudo <- hGetContents file
-    print conteudo
+    putStrLn conteudo
     putStrLn "Aperte enter"
     nada <- getLine
     hClose file
