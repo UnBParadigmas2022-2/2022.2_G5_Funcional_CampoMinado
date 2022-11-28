@@ -106,8 +106,10 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 Indique ainda sobre fontes de leitura complementares.
 -->
 
-https://github.com/raianyrufino/Minesweeper/tree/master/Haskell
+https://github.com/raianyrufino/Minesweeper/tree/master/Haskell (Repositório com funções úteis para o projeto)
 
 
-https://github.com/UnBParadigmas2021-2/2021.2_G4-Struct_Logico_Campo_Minado
+https://github.com/UnBParadigmas2021-2/2021.2_G4-Struct_Logico_Campo_Minado (Repositório com idéia de projeto)
 
+
+https://kuniga.wordpress.com/2012/06/17/leitura-e-escrita-de-dados-em-haskell/ (Site com ensimanetos úteis para trabalhar com arquios em Haskell)
