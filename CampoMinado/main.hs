@@ -41,7 +41,7 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
         putStrLn "Comando inválido. Digite TUTORIAL para entender as regras do jogo ou SAIR para deixar a partida."
         putStrLn"\n"
         entradas contador linhas colunas bombas mtzInterna mtzUsuario
-        --Helpers.imprimirMapa linhas colunas mtzUsuario
+        --Helpers.imprimirMapa linhas colunas mtzUsuario Teste
 
 
     if(j == "C") then do
