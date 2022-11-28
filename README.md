@@ -94,12 +94,10 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 
 
 ## Outros 
-<!--Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
-(i) Lições Aprendidas;
-(ii) Percepções;
-(iii) Contribuições e Fragilidades, e
-(iV) Trabalhos Futuros.
--->
+
+### Sugestões para próximos semestres
+
+* Implementar uma opção no menu para jogar o formigueiro minado com 2 jogadores: soluções imaginadas pela equipe: Jogar 2 jogadores no mesmo campo, com intuito de colaboração ou de competição, no sentido de que quem errar perde ou quem fizer o último comando antes da vitória é o vencedor. Segunda solução seria executar dois mapas de uma vez e alternar as jogadas entre os jogadores, perderia quem acertasse um formigueiro primeiro ou ganharia quem terminasse o jogo primeiro.
 
 ## Fontes
 <!--Referencie, adequadamente, as referências utilizadas.
