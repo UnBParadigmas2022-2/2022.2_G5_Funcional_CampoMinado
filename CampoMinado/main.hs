@@ -34,7 +34,7 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
             Mensagens.menuInstrucoes
     else if (j == "SAIR") then do
             Mensagens.menuConsciencia
-            putStrLn "Aperte Enter para voltar ao menú. . ."
+            putStrLn "Aperte Enter para voltar ao menu. . ."
             nada <- getLine
             menu
     else do
@@ -87,7 +87,7 @@ entradas contador linhas colunas bombas mtzInterna mtzUsuario = do
 
             entradas (contador) linhas colunas bombas mtzInterna matrizUsuario
     else do
-        putStrLn "Aperte Enter para voltar ao menú. . ."
+        putStrLn "Aperte Enter para voltar ao menu. . ."
         nada <- getLine
         menu
 
@@ -158,7 +158,7 @@ ranking :: IO ()
 ranking = do
     file <- openFile "ranking.txt" ReadMode
     conteudo <- hGetContents file
-    print conteudo
+    putStrLn conteudo
     putStrLn "Aperte enter"
     nada <- getLine
     hClose file
