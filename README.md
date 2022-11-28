@@ -105,3 +105,9 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 <!--Referencie, adequadamente, as referências utilizadas.
 Indique ainda sobre fontes de leitura complementares.
 -->
+
+https://github.com/raianyrufino/Minesweeper/tree/master/Haskell
+
+
+https://github.com/UnBParadigmas2021-2/2021.2_G4-Struct_Logico_Campo_Minado
+
