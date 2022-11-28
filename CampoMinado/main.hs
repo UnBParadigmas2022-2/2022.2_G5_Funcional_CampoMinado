@@ -87,7 +87,7 @@ verificaDificuldade x   | x == "1" = "5 5 5"
                         | x == "2" = "7 7 7"
                         | x == "3" = "9 9 9"
 
--- USO DE IF ELSE awdaw
+-- USO DE IF ELSE teste
 escolherDificuldade :: IO()
 escolherDificuldade = do
     putStrLn"Informe a dificuldade:"
